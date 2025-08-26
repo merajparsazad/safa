@@ -4,12 +4,13 @@ import Business from "./pages/Business";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Dashboard from "./pages/Dashboard";
-import Calender from "./pages/Calender";
+import Calendar from "./pages/Calendar";
 import Appointments from "./pages/Appointments";
 import Services from "./pages/Services";
 import Availability from "./pages/Availability";
 import Customers from "./pages/Customers";
 import Settings from "./pages/Settings";
+import AppLayout from "./ui/AppLayout";
 
 function App() {
   return (
@@ -19,15 +20,14 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="business/:businessId" element={<Business />} />
 
-        <Route element>
-          <Route path="dashboard/" element={<Dashboard />}>
-            <Route path="calender" element={<Calender />} />
-            <Route path="appointments" element={<Appointments />} />
-            <Route path="services" element={<Services />} />
-            <Route path="availability" element={<Availability />} />
-            <Route path="customers" element={<Customers />} />
-            <Route path="settings" element={<Settings />} />
-          </Route>
+        <Route element={<AppLayout />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="calendar" element={<Calendar />} />
+          <Route path="appointments" element={<Appointments />} />
+          <Route path="services" element={<Services />} />
+          <Route path="availability" element={<Availability />} />
+          <Route path="customers" element={<Customers />} />
+          <Route path="settings" element={<Settings />} />
         </Route>
 
         <Route path="login" element={<Login />} />
