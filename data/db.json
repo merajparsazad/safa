@@ -1,0 +1,100 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "owner1@example.com",
+      "password": "hashed-password-1",
+      "fullName": "احمد میهن دوست",
+      "phone_number": "09121111111",
+      "avatar": "",
+      "business_role": "true",
+      "created_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "2",
+      "email": "customer1@example.com",
+      "password": "hashed-password-2",
+      "fullName": "لیلا کریمی",
+      "phone_number": "09122222222",
+      "avatar": "",
+      "business_role": "false",
+      "created_at": "2024-02-20T11:30:00Z"
+    },
+    {
+      "id": "3",
+      "email": "customer2@example.com",
+      "password": "hashed-password-3",
+      "fullName": "رضا حسینی",
+      "phone_number": "09123333333",
+      "avatar": "",
+      "business_role": "false",
+      "created_at": "2024-03-05T14:00:00Z"
+    }
+  ],
+  "businesses": [
+    {
+      "id": "101",
+      "owner_id": 1,
+      "category": "آرایشگاه مردانه",
+      "name": "آرایشگاه مردانه شیک",
+      "description": "انواع خدمات پیرایش و آرایش مردانه.",
+      "province": "تهران",
+      "city": "تهران",
+      "address": "تهران، خیابان فاطمی، پلاک ۱۰",
+      "business_phone_number": "02188888888",
+      "social": "@shik_barber",
+      "is_active": true,
+      "created_at": "2024-01-15T10:05:00Z"
+    }
+  ],
+  "services": [
+    {
+      "id": "201",
+      "business_id": 101,
+      "name": "اصلاح مو",
+      "duration": 30,
+      "price": 100000,
+      "description": "اصلاح موی آقایان به سبک دلخواه",
+      "image": "/business-images/201-1.jpg"
+    },
+    {
+      "id": "202",
+      "business_id": 101,
+      "name": "گریم داماد",
+      "duration": 90,
+      "price": 500000,
+      "description": "پکیج کامل گریم و پیرایش داماد",
+      "image": "/business-images/202-1.jpg"
+    }
+  ],
+  "appointments": [
+    {
+      "id": "301",
+      "business_id": 101,
+      "customer_id": 2,
+      "service_id": 201,
+      "start_time": "2024-08-30T10:00:00Z",
+      "end_time": "2024-08-30T10:30:00Z",
+      "status": "pending",
+      "created_at": "2024-08-29T15:00:00Z"
+    }
+  ],
+  "availability": [
+    {
+      "id": "401",
+      "business_id": 101,
+      "start_time": "09:00",
+      "end_time": "18:00",
+      "day_of_week": "Monday",
+      "is_available": true
+    },
+    {
+      "id": "402",
+      "business_id": 101,
+      "start_time": "09:00",
+      "end_time": "18:00",
+      "day_of_week": "Tuesday",
+      "is_available": true
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "port": 9000,
+  "static": "./data",
+  "delay": 500
+}
