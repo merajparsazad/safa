@@ -13,6 +13,7 @@ import Settings from "./pages/Settings";
 import AppLayout from "./ui/AppLayout";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Bounce, ToastContainer } from "react-toastify";
 
 function App() {
   const queryClient = new QueryClient({
@@ -46,6 +47,18 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl
+        pauseOnFocusLoss
+        pauseOnHover
+        transition={Bounce}
+      />
     </QueryClientProvider>
   );
 }

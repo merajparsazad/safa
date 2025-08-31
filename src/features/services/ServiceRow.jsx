@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Button from "../../ui/Button";
 import { deleteService } from "../../api/apiServices";
+import { toast } from "react-toastify";
 
 function ServiceRow({ service }) {
   const { id: serviceId, name, duration, price, description, image } = service;
@@ -10,13 +11,13 @@ function ServiceRow({ service }) {
   const { isPending: isDeleting, mutate } = useMutation({
     mutationFn: deleteService,
     onSuccess: () => {
-      alert("خدمت با موفقیت حذف شد");
+      toast.success("خدمت با موفقیت حذف شد!");
 
       queryClient.invalidateQueries({
         queryKey: ["services"],
       });
     },
-    onError: (err) => alert(err.message),
+    onError: (err) => toast.error(err.message),
   });
 
   return (
