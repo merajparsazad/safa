@@ -11,29 +11,42 @@ import Availability from "./pages/Availability";
 import Customers from "./pages/Customers";
 import Settings from "./pages/Settings";
 import AppLayout from "./ui/AppLayout";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function App() {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 60 * 1000,
+      },
+    },
+  });
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Navigate replace path="/" />} />
-        <Route path="/" element={<Home />} />
-        <Route path="business/:businessId" element={<Business />} />
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Navigate replace path="/" />} />
+          <Route path="/" element={<Home />} />
+          <Route path="business/:businessId" element={<Business />} />
 
-        <Route element={<AppLayout />}>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="calendar" element={<Calendar />} />
-          <Route path="appointments" element={<Appointments />} />
-          <Route path="services" element={<Services />} />
-          <Route path="availability" element={<Availability />} />
-          <Route path="customers" element={<Customers />} />
-          <Route path="settings" element={<Settings />} />
-        </Route>
+          <Route element={<AppLayout />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="calendar" element={<Calendar />} />
+            <Route path="appointments" element={<Appointments />} />
+            <Route path="services" element={<Services />} />
+            <Route path="availability" element={<Availability />} />
+            <Route path="customers" element={<Customers />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
 
-        <Route path="login" element={<Login />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="login" element={<Login />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 
