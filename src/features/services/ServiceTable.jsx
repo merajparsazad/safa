@@ -29,9 +29,11 @@ function ServiceTable() {
         <div>توضیحات</div>
         <div></div>
       </header>
-      {services.map((service) => (
-        <ServiceRow service={service} key={service.id} />
-      ))}
+      {services
+        .filter((service) => service.business_id === 101)
+        .map((service) => (
+          <ServiceRow service={service} key={service.id} />
+        ))}
     </div>
   );
 }
