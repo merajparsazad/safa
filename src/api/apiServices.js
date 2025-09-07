@@ -29,10 +29,15 @@ export async function deleteService(id) {
   }
 }
 
-export async function createService(newService) {
+export async function createEditService(newService, id) {
   try {
-    const response = await fetch("http://localhost:3000/services", {
-      method: "POST",
+    const url = id
+      ? `http://localhost:3000/services/${id}`
+      : "http://localhost:3000/services";
+    const method = id ? "PATCH" : "POST";
+
+    const response = await fetch(url, {
+      method,
       headers: {
         "Content-Type": "application/json",
       },
@@ -40,7 +45,7 @@ export async function createService(newService) {
     });
 
     if (!response.ok) {
-      throw new Error("خطا در افزودن خدمت");
+      throw new Error(id ? "خطا در ویرایش خدمت" : "خطا در افزودن خدمت");
     }
 
     const data = await response.json();

@@ -6,17 +6,22 @@ import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import TextArea from "../../ui/TextArea";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createService } from "../../api/apiServices";
+import { createEditService } from "../../api/apiServices";
 import { toast } from "react-toastify";
 
-function CreateServiceForm() {
-  const { register, handleSubmit, reset, formState } = useForm();
+function CreateServiceForm({ serviceToEdit = {} }) {
+  const { id: editId, ...editValues } = serviceToEdit;
+  const isEditSession = Boolean(editId);
+
+  const { register, handleSubmit, reset, formState } = useForm({
+    defaultValues: isEditSession ? editValues : {},
+  });
   const { errors } = formState;
 
   const queryClient = useQueryClient();
 
-  const { isPending: isCreating, mutate } = useMutation({
-    mutationFn: createService,
+  const { isPending: isCreating, mutate: createService } = useMutation({
+    mutationFn: createEditService,
     onSuccess: () => {
       toast.success("خدمت جدید با موفقیت اضافه شد");
       queryClient.invalidateQueries({ queryKey: ["services"] });
@@ -25,15 +30,36 @@ function CreateServiceForm() {
     onError: (err) => toast.error(err.message),
   });
 
-  function onSubmit(data) {
-    const file = data.image[0];
-    const fakePath = `/business-images/${file.name}`;
+  const { isPending: isEditing, mutate: editService } = useMutation({
+    mutationFn: ({ newServiceData, id }) =>
+      createEditService(newServiceData, id),
+    onSuccess: () => {
+      toast.success("خدمت با موفقیت ویرایش شد");
+      queryClient.invalidateQueries({ queryKey: ["services"] });
+      reset();
+    },
+    onError: (err) => toast.error(err.message),
+  });
 
-    mutate({
-      ...data,
-      business_id: 101,
-      image: fakePath,
-    });
+  const isWorking = isCreating || isEditing;
+
+  function onSubmit(data) {
+    let fakePath = null;
+
+    if (data.image && data.image.length > 0) {
+      const file = typeof data.image === "string" ? data.image : data.image[0];
+      fakePath =
+        typeof file === "string" ? file : `/business-images/${file.name}`;
+    }
+
+    if (isEditSession)
+      editService({ newServiceData: { ...data, image: fakePath }, id: editId });
+    else
+      createService({
+        ...data,
+        business_id: 101,
+        image: fakePath,
+      });
   }
 
   return (
@@ -42,7 +68,7 @@ function CreateServiceForm() {
         <Input
           type="text"
           id="name"
-          disabled={isCreating}
+          disabled={isWorking}
           autoFocus
           {...register("name", {
             required: "تکمیل این بخش الزامیست",
@@ -58,7 +84,7 @@ function CreateServiceForm() {
         <Input
           type="number"
           id="duration"
-          disabled={isCreating}
+          disabled={isWorking}
           {...register("duration", {
             required: "تکمیل این بخش الزامیست",
             min: {
@@ -73,7 +99,7 @@ function CreateServiceForm() {
         <Input
           type="number"
           id="price"
-          disabled={isCreating}
+          disabled={isWorking}
           {...register("price", {
             required: "تکمیل این بخش الزامیست",
           })}
@@ -84,7 +110,7 @@ function CreateServiceForm() {
         <TextArea
           type="text"
           id="description"
-          disabled={isCreating}
+          disabled={isWorking}
           {...register("description", {
             required: "تکمیل این بخش الزامیست",
           })}
@@ -99,8 +125,8 @@ function CreateServiceForm() {
         <Button variant="secondary" type="reset">
           پاک کردن
         </Button>
-        <Button type="submit" disabled={isCreating}>
-          اضافه کردن
+        <Button type="submit" disabled={isWorking}>
+          {isEditSession ? "ویرایش" : "اضافه کردن"}
         </Button>
       </FormRow>
     </Form>
