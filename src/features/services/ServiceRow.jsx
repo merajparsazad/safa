@@ -1,28 +1,14 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Button from "../../ui/Button";
-import { deleteService } from "../../api/apiServices";
-import { toast } from "react-toastify";
 import { useState } from "react";
 import CreateServiceForm from "./CreateServiceForm";
+import { useDeleteService } from "./useDeleteService";
 
 function ServiceRow({ service }) {
   const [showForm, setShowForm] = useState(false);
 
   const { id: serviceId, name, duration, price, description, image } = service;
 
-  const queryClient = useQueryClient();
-
-  const { isPending: isDeleting, mutate } = useMutation({
-    mutationFn: deleteService,
-    onSuccess: () => {
-      toast.success("خدمت با موفقیت حذف شد!");
-
-      queryClient.invalidateQueries({
-        queryKey: ["services"],
-      });
-    },
-    onError: (err) => toast.error(err.message),
-  });
+  const { isDeleting, deleteService } = useDeleteService();
 
   return (
     <>
@@ -45,7 +31,7 @@ function ServiceRow({ service }) {
           <Button onClick={() => setShowForm((show) => !show)}>ویرایش</Button>
           <Button
             variant="danger"
-            onClick={() => mutate(serviceId)}
+            onClick={() => deleteService(serviceId)}
             disabled={isDeleting}
           >
             حذف

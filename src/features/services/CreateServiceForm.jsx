@@ -5,9 +5,8 @@ import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import TextArea from "../../ui/TextArea";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createEditService } from "../../api/apiServices";
-import { toast } from "react-toastify";
+import { useCreateService } from "./useCreateService";
+import { useEditService } from "./useEditService";
 
 function CreateServiceForm({ serviceToEdit = {} }) {
   const { id: editId, ...editValues } = serviceToEdit;
@@ -18,28 +17,8 @@ function CreateServiceForm({ serviceToEdit = {} }) {
   });
   const { errors } = formState;
 
-  const queryClient = useQueryClient();
-
-  const { isPending: isCreating, mutate: createService } = useMutation({
-    mutationFn: createEditService,
-    onSuccess: () => {
-      toast.success("خدمت جدید با موفقیت اضافه شد");
-      queryClient.invalidateQueries({ queryKey: ["services"] });
-      reset();
-    },
-    onError: (err) => toast.error(err.message),
-  });
-
-  const { isPending: isEditing, mutate: editService } = useMutation({
-    mutationFn: ({ newServiceData, id }) =>
-      createEditService(newServiceData, id),
-    onSuccess: () => {
-      toast.success("خدمت با موفقیت ویرایش شد");
-      queryClient.invalidateQueries({ queryKey: ["services"] });
-      reset();
-    },
-    onError: (err) => toast.error(err.message),
-  });
+  const { isCreating, createService } = useCreateService();
+  const { isEditing, editService } = useEditService();
 
   const isWorking = isCreating || isEditing;
 
@@ -53,13 +32,19 @@ function CreateServiceForm({ serviceToEdit = {} }) {
     }
 
     if (isEditSession)
-      editService({ newServiceData: { ...data, image: fakePath }, id: editId });
+      editService(
+        { newServiceData: { ...data, image: fakePath }, id: editId },
+        { onSuccess: () => reset() },
+      );
     else
-      createService({
-        ...data,
-        business_id: 101,
-        image: fakePath,
-      });
+      createService(
+        {
+          ...data,
+          business_id: 101,
+          image: fakePath,
+        },
+        { onSuccess: () => reset() },
+      );
   }
 
   return (

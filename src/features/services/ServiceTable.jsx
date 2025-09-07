@@ -1,18 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
-import { getServices } from "../../api/apiServices";
 import Spinner from "../../ui/Spinner";
 import ServiceRow from "./ServiceRow";
+import { useServices } from "./useServices";
 
 function ServiceTable() {
-  const {
-    isPending,
-    // error,
-    data: services,
-  } = useQuery({
-    queryKey: ["services"],
-    queryFn: getServices,
-  });
+  const { isPending, services } = useServices();
+
   if (isPending) return <Spinner />;
+
   return (
     <div
       role="table"
