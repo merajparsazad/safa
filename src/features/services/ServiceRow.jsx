@@ -2,13 +2,27 @@ import Button from "../../ui/Button";
 import { useState } from "react";
 import CreateServiceForm from "./CreateServiceForm";
 import { useDeleteService } from "./useDeleteService";
+import { HiOutlineSquare2Stack } from "react-icons/hi2";
+import { TbPencil, TbTrash } from "react-icons/tb";
+import { useCreateService } from "./useCreateService";
 
 function ServiceRow({ service }) {
   const [showForm, setShowForm] = useState(false);
+  const { isDeleting, deleteService } = useDeleteService();
+  const { isCreating, createService } = useCreateService();
 
   const { id: serviceId, name, duration, price, description, image } = service;
 
-  const { isDeleting, deleteService } = useDeleteService();
+  function handleDuplicate() {
+    createService({
+      business_id: 101,
+      name: `کپی از ${name}`,
+      duration,
+      price,
+      description,
+      image,
+    });
+  }
 
   return (
     <>
@@ -27,14 +41,19 @@ function ServiceRow({ service }) {
         </div>
         <div className="font-semibold">{price} تومان</div>
         <div className="text-sm">{description}</div>
-        <div className="flex flex-col gap-1">
-          <Button onClick={() => setShowForm((show) => !show)}>ویرایش</Button>
+        <div className="flex flex-row gap-1">
+          <Button onClick={handleDuplicate} disabled={isCreating}>
+            <HiOutlineSquare2Stack />
+          </Button>
+          <Button onClick={() => setShowForm((show) => !show)}>
+            <TbPencil />
+          </Button>
           <Button
             variant="danger"
             onClick={() => deleteService(serviceId)}
             disabled={isDeleting}
           >
-            حذف
+            <TbTrash />
           </Button>
         </div>
       </div>
