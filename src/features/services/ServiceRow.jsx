@@ -1,13 +1,13 @@
 import Button from "../../ui/Button";
-import { useState } from "react";
 import CreateServiceForm from "./CreateServiceForm";
 import { useDeleteService } from "./useDeleteService";
 import { HiOutlineSquare2Stack } from "react-icons/hi2";
 import { TbPencil, TbTrash } from "react-icons/tb";
 import { useCreateService } from "./useCreateService";
+import Modal from "../../ui/Modal";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
 function ServiceRow({ service }) {
-  const [showForm, setShowForm] = useState(false);
   const { isDeleting, deleteService } = useDeleteService();
   const { isCreating, createService } = useCreateService();
 
@@ -45,19 +45,32 @@ function ServiceRow({ service }) {
           <Button onClick={handleDuplicate} disabled={isCreating}>
             <HiOutlineSquare2Stack />
           </Button>
-          <Button onClick={() => setShowForm((show) => !show)}>
-            <TbPencil />
-          </Button>
-          <Button
-            variant="danger"
-            onClick={() => deleteService(serviceId)}
-            disabled={isDeleting}
-          >
-            <TbTrash />
-          </Button>
+
+          <Modal>
+            <Modal.Open opens="edit">
+              <Button>
+                <TbPencil />
+              </Button>
+            </Modal.Open>
+            <Modal.Window name="edit">
+              <CreateServiceForm serviceToEdit={service} />
+            </Modal.Window>
+
+            <Modal.Open opens="delete">
+              <Button variant="danger">
+                <TbTrash />
+              </Button>
+            </Modal.Open>
+            <Modal.Window name="delete">
+              <ConfirmDelete
+                resourceName="services"
+                disabled={isDeleting}
+                onConfirm={() => deleteService(serviceId)}
+              />
+            </Modal.Window>
+          </Modal>
         </div>
       </div>
-      {showForm && <CreateServiceForm serviceToEdit={service} />}
     </>
   );
 }

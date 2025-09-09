@@ -8,7 +8,7 @@ import TextArea from "../../ui/TextArea";
 import { useCreateService } from "./useCreateService";
 import { useEditService } from "./useEditService";
 
-function CreateServiceForm({ serviceToEdit = {} }) {
+function CreateServiceForm({ serviceToEdit = {}, onCloseModal }) {
   const { id: editId, ...editValues } = serviceToEdit;
   const isEditSession = Boolean(editId);
 
@@ -34,7 +34,12 @@ function CreateServiceForm({ serviceToEdit = {} }) {
     if (isEditSession)
       editService(
         { newServiceData: { ...data, image: fakePath }, id: editId },
-        { onSuccess: () => reset() },
+        {
+          onSuccess: () => {
+            reset();
+            onCloseModal?.();
+          },
+        },
       );
     else
       createService(
@@ -43,12 +48,17 @@ function CreateServiceForm({ serviceToEdit = {} }) {
           business_id: 101,
           image: fakePath,
         },
-        { onSuccess: () => reset() },
+        {
+          onSuccess: () => {
+            reset();
+            onCloseModal?.();
+          },
+        },
       );
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)} type={onCloseModal ? "modal" : "regular"}>
       <FormRow label="عنوان خدمت" error={errors?.name?.message}>
         <Input
           type="text"
@@ -107,8 +117,12 @@ function CreateServiceForm({ serviceToEdit = {} }) {
       </FormRow>
 
       <FormRow>
-        <Button variant="secondary" type="reset">
-          پاک کردن
+        <Button
+          variant="secondary"
+          type="reset"
+          onClick={() => onCloseModal?.()}
+        >
+          انصراف
         </Button>
         <Button type="submit" disabled={isWorking}>
           {isEditSession ? "ویرایش" : "اضافه کردن"}
