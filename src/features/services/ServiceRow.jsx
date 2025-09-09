@@ -6,6 +6,7 @@ import { TbPencil, TbTrash } from "react-icons/tb";
 import { useCreateService } from "./useCreateService";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
+import Table from "../../ui/Table";
 
 function ServiceRow({ service }) {
   const { isDeleting, deleteService } = useDeleteService();
@@ -26,10 +27,7 @@ function ServiceRow({ service }) {
 
   return (
     <>
-      <div
-        role="row"
-        className="grid grid-cols-[1fr_1.2fr_1.4fr_1fr_1.4fr_1fr] items-center gap-x-9 px-9 py-6 text-base not-last:border-b not-last:border-solid not-last:border-b-gray-100"
-      >
+      <Table.Row>
         <img
           src={image}
           alt={name}
@@ -70,7 +68,7 @@ function ServiceRow({ service }) {
             </Modal.Window>
           </Modal>
         </div>
-      </div>
+      </Table.Row>
     </>
   );
 }
