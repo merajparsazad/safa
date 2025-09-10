@@ -11,6 +11,7 @@ function ServiceTable() {
 
   if (isPending) return <Spinner />;
 
+  // FILTER
   const filterValue = searchParams.get("duration") || "all";
 
   let filteredServices;
@@ -19,6 +20,21 @@ function ServiceTable() {
     filteredServices = services.filter((service) => service.duration < 31);
   if (filterValue === "over-31")
     filteredServices = services.filter((service) => service.duration >= 31);
+
+  // SORT
+  const sortBy = searchParams.get("sortBy") || "startDate-asc";
+  const [field, direction] = sortBy.split("-");
+  const modifier = direction === "asc" ? 1 : -1;
+  const sortedServices = filteredServices.sort((a, b) => {
+    const valueA = a[field];
+    const valueB = b[field];
+
+    if (typeof valueA === "string" && typeof valueB === "string") {
+      return valueA.localeCompare(valueB, "fa") * modifier;
+    }
+
+    return (valueA - valueB) * modifier;
+  });
 
   return (
     <Menus>
@@ -33,9 +49,7 @@ function ServiceTable() {
         </Table.Header>
 
         <Table.Body
-          data={filteredServices.filter(
-            (service) => service.business_id === 101,
-          )}
+          data={sortedServices.filter((service) => service.business_id === 101)}
           render={(service) => (
             <ServiceRow service={service} key={service.id} />
           )}
