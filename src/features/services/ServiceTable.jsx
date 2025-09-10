@@ -1,3 +1,4 @@
+import { useSearchParams } from "react-router-dom";
 import Menus from "../../ui/Menus";
 import Spinner from "../../ui/Spinner";
 import Table from "../../ui/Table";
@@ -6,8 +7,18 @@ import { useServices } from "./useServices";
 
 function ServiceTable() {
   const { isPending, services } = useServices();
+  const [searchParams] = useSearchParams();
 
   if (isPending) return <Spinner />;
+
+  const filterValue = searchParams.get("duration") || "all";
+
+  let filteredServices;
+  if (filterValue === "all") filteredServices = services;
+  if (filterValue === "under-31")
+    filteredServices = services.filter((service) => service.duration < 31);
+  if (filterValue === "over-31")
+    filteredServices = services.filter((service) => service.duration >= 31);
 
   return (
     <Menus>
@@ -22,7 +33,9 @@ function ServiceTable() {
         </Table.Header>
 
         <Table.Body
-          data={services.filter((service) => service.business_id === 101)}
+          data={filteredServices.filter(
+            (service) => service.business_id === 101,
+          )}
           render={(service) => (
             <ServiceRow service={service} key={service.id} />
           )}
