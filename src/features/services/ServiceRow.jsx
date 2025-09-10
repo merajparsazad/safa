@@ -1,4 +1,3 @@
-import Button from "../../ui/Button";
 import CreateServiceForm from "./CreateServiceForm";
 import { useDeleteService } from "./useDeleteService";
 import { HiOutlineSquare2Stack } from "react-icons/hi2";
@@ -7,6 +6,7 @@ import { useCreateService } from "./useCreateService";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import Table from "../../ui/Table";
+import Menus from "../../ui/Menus";
 
 function ServiceRow({ service }) {
   const { isDeleting, deleteService } = useDeleteService();
@@ -40,25 +40,33 @@ function ServiceRow({ service }) {
         <div className="font-semibold">{price} تومان</div>
         <div className="text-sm">{description}</div>
         <div className="flex flex-row gap-1">
-          <Button onClick={handleDuplicate} disabled={isCreating}>
-            <HiOutlineSquare2Stack />
-          </Button>
-
           <Modal>
-            <Modal.Open opens="edit">
-              <Button>
-                <TbPencil />
-              </Button>
-            </Modal.Open>
+            <Menus.Menu>
+              <Menus.Toggle id={serviceId} />
+
+              <Menus.List id={serviceId}>
+                <Menus.Button
+                  icon={<HiOutlineSquare2Stack />}
+                  onClick={handleDuplicate}
+                  disabled={isCreating}
+                >
+                  کپی
+                </Menus.Button>
+
+                <Modal.Open opens="edit">
+                  <Menus.Button icon={<TbPencil />}>ویرایش</Menus.Button>
+                </Modal.Open>
+
+                <Modal.Open opens="delete">
+                  <Menus.Button icon={<TbTrash />}>حذف</Menus.Button>
+                </Modal.Open>
+              </Menus.List>
+            </Menus.Menu>
+
             <Modal.Window name="edit">
               <CreateServiceForm serviceToEdit={service} />
             </Modal.Window>
 
-            <Modal.Open opens="delete">
-              <Button variant="danger">
-                <TbTrash />
-              </Button>
-            </Modal.Open>
             <Modal.Window name="delete">
               <ConfirmDelete
                 resourceName="services"
