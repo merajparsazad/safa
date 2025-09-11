@@ -1,13 +1,16 @@
-export async function getServices() {
+export async function getServices(businessId) {
   try {
     const response = await fetch("http://localhost:3000/services");
 
     if (!response.ok) {
-      throw new Error("خطا در دریافت خدمت");
+      throw new Error("خطا در دریافت خدمات");
     }
 
     const json = await response.json();
-    return json;
+    const filteredServices = json.filter(
+      (service) => service.business_id === businessId,
+    );
+    return filteredServices;
   } catch (error) {
     throw new Error(error.message);
   }

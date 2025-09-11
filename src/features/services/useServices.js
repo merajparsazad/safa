@@ -8,7 +8,7 @@ export function useServices() {
     data: services,
   } = useQuery({
     queryKey: ["services"],
-    queryFn: getServices,
+    queryFn: () => getServices(101),
   });
 
   return { isPending, error, services };

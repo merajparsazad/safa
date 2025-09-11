@@ -4,11 +4,13 @@ import Spinner from "../../ui/Spinner";
 import Table from "../../ui/Table";
 import ServiceRow from "./ServiceRow";
 import { useServices } from "./useServices";
+import Empty from "../../ui/Empty";
 
 function ServiceTable() {
   const { isPending, services } = useServices();
   const [searchParams] = useSearchParams();
 
+  if (!services) return <Empty resourceName="خدمتی" />;
   if (isPending) return <Spinner />;
 
   // FILTER
@@ -49,7 +51,7 @@ function ServiceTable() {
         </Table.Header>
 
         <Table.Body
-          data={sortedServices.filter((service) => service.business_id === 101)}
+          data={sortedServices}
           render={(service) => (
             <ServiceRow service={service} key={service.id} />
           )}
