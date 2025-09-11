@@ -7,7 +7,8 @@
       "fullName": "احمد میهن دوست",
       "phone_number": "09121111111",
       "avatar": "",
-      "business_role": "true",
+      "business_role": true,
+      "business_id": 101,
       "created_at": "2024-01-15T10:00:00Z"
     },
     {
@@ -17,7 +18,8 @@
       "fullName": "لیلا کریمی",
       "phone_number": "09122222222",
       "avatar": "",
-      "business_role": "false",
+      "business_role": false,
+      "business_id": null,
       "created_at": "2024-02-20T11:30:00Z"
     },
     {
@@ -27,8 +29,141 @@
       "fullName": "رضا حسینی",
       "phone_number": "09123333333",
       "avatar": "",
-      "business_role": "false",
+      "business_role": false,
+      "business_id": null,
       "created_at": "2024-03-05T14:00:00Z"
+    },
+    {
+      "id": "4",
+      "email": "owner2@example.com",
+      "password": "hashed-password-4",
+      "fullName": "مریم احمدی",
+      "phone_number": "09124444444",
+      "avatar": "",
+      "business_role": true,
+      "business_id": 102,
+      "created_at": "2024-04-10T09:00:00Z"
+    },
+    {
+      "id": "5",
+      "email": "owner3@example.com",
+      "password": "hashed-password-5",
+      "fullName": "علی رضایی",
+      "phone_number": "09125555555",
+      "avatar": "",
+      "business_role": true,
+      "business_id": 103,
+      "created_at": "2024-05-22T16:00:00Z"
+    },
+    {
+      "id": "6",
+      "email": "customer3@example.com",
+      "password": "hashed-password-6",
+      "fullName": "محمدی رستمی",
+      "phone_number": "09126666666",
+      "avatar": "",
+      "business_role": false,
+      "business_id": null,
+      "created_at": "2024-06-01T09:00:00Z"
+    },
+    {
+      "id": "7",
+      "email": "customer4@example.com",
+      "password": "hashed-password-7",
+      "fullName": "فاطمه شریفی",
+      "phone_number": "09127777777",
+      "avatar": "",
+      "business_role": false,
+      "business_id": null,
+      "created_at": "2024-06-10T11:00:00Z"
+    },
+    {
+      "id": "8",
+      "email": "customer5@example.com",
+      "password": "hashed-password-8",
+      "fullName": "حسن یوسفی",
+      "phone_number": "09128888888",
+      "avatar": "",
+      "business_role": false,
+      "business_id": null,
+      "created_at": "2024-06-15T14:00:00Z"
+    },
+    {
+      "id": "9",
+      "email": "customer6@example.com",
+      "password": "hashed-password-9",
+      "fullName": "زهرا فلاحی",
+      "phone_number": "09129999999",
+      "avatar": "",
+      "business_role": false,
+      "business_id": null,
+      "created_at": "2024-06-20T16:00:00Z"
+    },
+    {
+      "id": "10",
+      "email": "customer7@example.com",
+      "password": "hashed-password-10",
+      "fullName": "امیر اسدی",
+      "phone_number": "09120000000",
+      "avatar": "",
+      "business_role": false,
+      "business_id": null,
+      "created_at": "2024-07-01T10:00:00Z"
+    },
+    {
+      "id": "11",
+      "email": "customer8@example.com",
+      "password": "hashed-password-11",
+      "fullName": "نسرین بهرامی",
+      "phone_number": "09121212121",
+      "avatar": "",
+      "business_role": false,
+      "business_id": null,
+      "created_at": "2024-07-05T12:00:00Z"
+    },
+    {
+      "id": "12",
+      "email": "customer9@example.com",
+      "password": "hashed-password-12",
+      "fullName": "محسن کاظمی",
+      "phone_number": "09123434343",
+      "avatar": "",
+      "business_role": false,
+      "business_id": null,
+      "created_at": "2024-07-10T15:00:00Z"
+    },
+    {
+      "id": "13",
+      "email": "customer10@example.com",
+      "password": "hashed-password-13",
+      "fullName": "سارا محمدی",
+      "phone_number": "09125656565",
+      "avatar": "",
+      "business_role": false,
+      "business_id": null,
+      "created_at": "2024-07-15T17:00:00Z"
+    },
+    {
+      "id": "14",
+      "email": "customer11@example.com",
+      "password": "hashed-password-14",
+      "fullName": "فرهاد کریمی",
+      "phone_number": "09127878787",
+      "avatar": "",
+      "business_role": false,
+      "business_id": null,
+      "created_at": "2024-07-20T09:00:00Z"
+    },
+    {
+      "id": "15",
+      "email": "customer12@example.com",
+      "password": "hashed-password-15",
+      "fullName": "نازنین حسینی",
+      "phone_number": "09129090909",
+      "avatar": "",
+      "business_role": false,
+      "business_id": null,
+      "created_at": "2024-07-25T11:00:00Z"
     }
   ],
   "businesses": [
@@ -45,6 +180,34 @@
       "social": "@shik_barber",
       "is_active": true,
       "created_at": "2024-01-15T10:05:00Z"
+    },
+    {
+      "id": "102",
+      "owner_id": 4,
+      "category": "سالن زیبایی",
+      "name": "سالن زیبایی مریم",
+      "description": "خدمات تخصصی آرایش و زیبایی بانوان.",
+      "province": "تهران",
+      "city": "تهران",
+      "address": "تهران، سعادت آباد، خیابان سرو شرقی",
+      "business_phone_number": "02122222222",
+      "social": "@maryam_beautysalon",
+      "is_active": true,
+      "created_at": "2024-04-10T09:15:00Z"
+    },
+    {
+      "id": "103",
+      "owner_id": 5,
+      "category": "کلینیک دندانپزشکی",
+      "name": "کلینیک دندانپزشکی لبخند",
+      "description": "ارائه انواع خدمات ترمیمی و زیبایی دندان.",
+      "province": "اصفهان",
+      "city": "اصفهان",
+      "address": "اصفهان، خیابان توحید، مجتمع پزشکی",
+      "business_phone_number": "03133333333",
+      "social": "@labkhand_dentalclinic",
+      "is_active": true,
+      "created_at": "2024-05-22T16:30:00Z"
     }
   ],
   "services": [
@@ -65,6 +228,42 @@
       "price": 500000,
       "description": "پکیج کامل گریم و پیرایش داماد",
       "image": "/business-images/202-1.jpg"
+    },
+    {
+      "id": "203",
+      "business_id": 102,
+      "name": "کوتاهی مو",
+      "duration": 45,
+      "price": 150000,
+      "description": "کوتاهی و پیتاژ مو به صورت حرفه‌ای",
+      "image": "/business-images/203-1.jpg"
+    },
+    {
+      "id": "204",
+      "business_id": 102,
+      "name": "کاشت ناخن",
+      "duration": 120,
+      "price": 300000,
+      "description": "کاشت ناخن با مواد مرغوب و دیزاین‌های متنوع",
+      "image": "/business-images/204-1.jpg"
+    },
+    {
+      "id": "205",
+      "business_id": 103,
+      "name": "ترمیم دندان",
+      "duration": 60,
+      "price": 400000,
+      "description": "ترمیم پوسیدگی دندان با مواد کامپوزیتی",
+      "image": "/business-images/205-1.jpg"
+    },
+    {
+      "id": "206",
+      "business_id": 103,
+      "name": "جرمگیری و بروساژ",
+      "duration": 45,
+      "price": 250000,
+      "description": "جرمگیری و بروساژ کامل دندان‌ها برای رفع پلاک",
+      "image": "/business-images/206-1.jpg"
     }
   ],
   "appointments": [
@@ -75,8 +274,198 @@
       "service_id": 201,
       "start_time": "2024-08-30T10:00:00Z",
       "end_time": "2024-08-30T10:30:00Z",
-      "status": "pending",
+      "status": "در انتظار",
       "created_at": "2024-08-29T15:00:00Z"
+    },
+    {
+      "id": "302",
+      "business_id": 101,
+      "customer_id": 3,
+      "service_id": 202,
+      "start_time": "2024-09-01T14:00:00Z",
+      "end_time": "2024-09-01T15:30:00Z",
+      "status": "تایید شده",
+      "created_at": "2024-08-31T11:00:00Z"
+    },
+    {
+      "id": "303",
+      "business_id": 102,
+      "customer_id": 5,
+      "service_id": 203,
+      "start_time": "2024-09-05T11:00:00Z",
+      "end_time": "2024-09-05T11:45:00Z",
+      "status": "تایید شده",
+      "created_at": "2024-09-04T16:00:00Z"
+    },
+    {
+      "id": "304",
+      "business_id": 102,
+      "customer_id": 2,
+      "service_id": 204,
+      "start_time": "2024-09-10T15:00:00Z",
+      "end_time": "2024-09-10T17:00:00Z",
+      "status": "در انتظار",
+      "created_at": "2024-09-09T09:00:00Z"
+    },
+    {
+      "id": "305",
+      "business_id": 103,
+      "customer_id": 3,
+      "service_id": 205,
+      "start_time": "2024-09-15T09:00:00Z",
+      "end_time": "2024-09-15T10:00:00Z",
+      "status": "تایید شده",
+      "created_at": "2024-09-14T12:00:00Z"
+    },
+    {
+      "id": "306",
+      "business_id": 103,
+      "customer_id": 2,
+      "service_id": 206,
+      "start_time": "2024-09-20T11:00:00Z",
+      "end_time": "2024-09-20T11:45:00Z",
+      "status": "در انتظار",
+      "created_at": "2024-09-19T14:00:00Z"
+    },
+    {
+      "id": "307",
+      "business_id": 101,
+      "customer_id": 5,
+      "service_id": 201,
+      "start_time": "2024-09-25T16:00:00Z",
+      "end_time": "2024-09-25T16:30:00Z",
+      "status": "تایید شده",
+      "created_at": "2024-09-24T10:00:00Z"
+    },
+    {
+      "id": "308",
+      "business_id": 102,
+      "customer_id": 3,
+      "service_id": 203,
+      "start_time": "2024-09-28T10:30:00Z",
+      "end_time": "2024-09-28T11:15:00Z",
+      "status": "تایید شده",
+      "created_at": "2024-09-27T17:00:00Z"
+    },
+    {
+      "id": "309",
+      "business_id": 103,
+      "customer_id": 5,
+      "service_id": 205,
+      "start_time": "2024-10-01T14:00:00Z",
+      "end_time": "2024-10-01T15:00:00Z",
+      "status": "در انتظار",
+      "created_at": "2024-09-30T09:00:00Z"
+    },
+    {
+      "id": "310",
+      "business_id": 101,
+      "customer_id": 2,
+      "service_id": 202,
+      "start_time": "2024-10-05T13:00:00Z",
+      "end_time": "2024-10-05T14:30:00Z",
+      "status": "تایید شده",
+      "created_at": "2024-10-04T11:00:00Z"
+    },
+    {
+      "id": "311",
+      "business_id": 101,
+      "customer_id": 6,
+      "service_id": 201,
+      "start_time": "2024-10-10T10:00:00Z",
+      "end_time": "2024-10-10T10:30:00Z",
+      "status": "تکمیل شده",
+      "created_at": "2024-10-09T14:00:00Z"
+    },
+    {
+      "id": "312",
+      "business_id": 101,
+      "customer_id": 7,
+      "service_id": 202,
+      "start_time": "2024-10-12T15:00:00Z",
+      "end_time": "2024-10-12T16:30:00Z",
+      "status": "تکمیل شده",
+      "created_at": "2024-10-11T10:00:00Z"
+    },
+    {
+      "id": "313",
+      "business_id": 101,
+      "customer_id": 8,
+      "service_id": 201,
+      "start_time": "2024-10-15T11:00:00Z",
+      "end_time": "2024-10-15T11:30:00Z",
+      "status": "تایید نشده",
+      "created_at": "2024-10-14T12:00:00Z"
+    },
+    {
+      "id": "314",
+      "business_id": 101,
+      "customer_id": 9,
+      "service_id": 202,
+      "start_time": "2024-10-18T16:00:00Z",
+      "end_time": "2024-10-18T17:30:00Z",
+      "status": "در انتظار",
+      "created_at": "2024-10-17T15:00:00Z"
+    },
+    {
+      "id": "315",
+      "business_id": 101,
+      "customer_id": 10,
+      "service_id": 201,
+      "start_time": "2024-10-20T10:00:00Z",
+      "end_time": "2024-10-20T10:30:00Z",
+      "status": "تایید نشده",
+      "created_at": "2024-10-19T09:00:00Z"
+    },
+    {
+      "id": "316",
+      "business_id": 101,
+      "customer_id": 11,
+      "service_id": 202,
+      "start_time": "2024-10-22T13:00:00Z",
+      "end_time": "2024-10-22T14:30:00Z",
+      "status": "در انتظار",
+      "created_at": "2024-10-21T11:00:00Z"
+    },
+    {
+      "id": "317",
+      "business_id": 101,
+      "customer_id": 12,
+      "service_id": 201,
+      "start_time": "2024-10-25T14:00:00Z",
+      "end_time": "2024-10-25T14:30:00Z",
+      "status": "تایید شده",
+      "created_at": "2024-10-24T10:00:00Z"
+    },
+    {
+      "id": "318",
+      "business_id": 101,
+      "customer_id": 13,
+      "service_id": 202,
+      "start_time": "2024-10-27T17:00:00Z",
+      "end_time": "2024-10-27T18:30:00Z",
+      "status": "تایید شده",
+      "created_at": "2024-10-26T12:00:00Z"
+    },
+    {
+      "id": "319",
+      "business_id": 101,
+      "customer_id": 14,
+      "service_id": 201,
+      "start_time": "2024-10-29T09:00:00Z",
+      "end_time": "2024-10-29T09:30:00Z",
+      "status": "در انتظار",
+      "created_at": "2024-10-28T09:00:00Z"
+    },
+    {
+      "id": "320",
+      "business_id": 101,
+      "customer_id": 15,
+      "service_id": 202,
+      "start_time": "2024-11-01T11:00:00Z",
+      "end_time": "2024-11-01T12:30:00Z",
+      "status": "تایید شده",
+      "created_at": "2024-10-31T15:00:00Z"
     }
   ],
   "availability": [
@@ -94,6 +483,38 @@
       "start_time": "09:00",
       "end_time": "18:00",
       "day_of_week": "Tuesday",
+      "is_available": true
+    },
+    {
+      "id": "403",
+      "business_id": 102,
+      "start_time": "10:00",
+      "end_time": "19:00",
+      "day_of_week": "Tuesday",
+      "is_available": true
+    },
+    {
+      "id": "404",
+      "business_id": 102,
+      "start_time": "10:00",
+      "end_time": "19:00",
+      "day_of_week": "Wednesday",
+      "is_available": true
+    },
+    {
+      "id": "405",
+      "business_id": 103,
+      "start_time": "08:00",
+      "end_time": "17:00",
+      "day_of_week": "Sunday",
+      "is_available": true
+    },
+    {
+      "id": "406",
+      "business_id": 103,
+      "start_time": "08:00",
+      "end_time": "17:00",
+      "day_of_week": "Monday",
       "is_available": true
     }
   ]
