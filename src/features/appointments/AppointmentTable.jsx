@@ -5,6 +5,8 @@ import Menus from "../../ui/Menus";
 import Empty from "../../ui/Empty";
 import Spinner from "../../ui/Spinner";
 import { useSearchParams } from "react-router-dom";
+import Pagination from "../../ui/Pagination";
+import { PAGE_SIZE } from "../../utils/constants";
 
 function AppointmentTable() {
   const { appointments, isPending } = useAppointments();
@@ -50,6 +52,14 @@ function AppointmentTable() {
     return (valueA - valueB) * modifier;
   });
 
+  // PAGINATION
+  const currentPage = !searchParams.get("page")
+    ? 1
+    : Number(searchParams.get("page"));
+  const startIndex = (currentPage - 1) * PAGE_SIZE;
+  const endIndex = startIndex + PAGE_SIZE;
+  const currentAppointments = sortedAppointments.slice(startIndex, endIndex);
+
   return (
     <Menus>
       <Table columns="1fr 1fr 2fr 1fr 1fr 0.5fr">
@@ -63,11 +73,14 @@ function AppointmentTable() {
         </Table.Header>
 
         <Table.Body
-          data={sortedAppointments}
+          data={currentAppointments}
           render={(appointment) => (
             <AppointmentRow key={appointment.id} appointment={appointment} />
           )}
         />
+        <Table.Footer>
+          <Pagination count={sortedAppointments.length} />
+        </Table.Footer>
       </Table>
     </Menus>
   );

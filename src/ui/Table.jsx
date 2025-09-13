@@ -56,8 +56,17 @@ function Body({ data, render }) {
   return <section className="my-1.5">{data.map(render)}</section>;
 }
 
+function Footer({ children }) {
+  return (
+    <div className="flex justify-center bg-gray-50 p-4 [&:not(:has(*))]:hidden">
+      {children}
+    </div>
+  );
+}
+
 Table.Header = Header;
 Table.Body = Body;
 Table.Row = Row;
+Table.Footer = Footer;
 
 export default Table;
