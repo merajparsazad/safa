@@ -44,3 +44,27 @@ export async function getAppointments(businessId) {
     throw new Error(error.message);
   }
 }
+
+export async function updateAppointment(id, obj) {
+  try {
+    const url = `http://localhost:3000/appointments/${id}`;
+    const method = "PATCH";
+
+    const response = await fetch(url, {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    });
+
+    if (!response.ok) {
+      throw new Error("خطا در ویرایش نوبت");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}

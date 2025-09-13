@@ -1,10 +1,17 @@
 import { IoMdArrowRoundBack } from "react-icons/io";
 import Table from "../../ui/Table";
 import { toJalali } from "../../utils/helpers";
+import Menus from "../../ui/Menus";
+import {
+  TbClipboardCheck,
+  TbSquareRoundedCheck,
+  TbSquareRoundedLetterX,
+} from "react-icons/tb";
+import { useUpdateStatus } from "./useUpdateAppointment";
 
 function AppointmentRow({
   appointment: {
-    // id: appointmentId,
+    id: appointmentId,
     serviceName,
     customerName,
     startTime,
@@ -13,6 +20,8 @@ function AppointmentRow({
     status,
   },
 }) {
+  const { updateStatus } = useUpdateStatus();
+
   return (
     <Table.Row>
       <div className="text-base font-medium text-gray-800">{serviceName}</div>
@@ -40,6 +49,43 @@ function AppointmentRow({
       >
         {status}
       </div>
+      {(status === "در انتظار" || status === "تایید شده") && (
+        <Menus.Menu>
+          <Menus.Toggle id={appointmentId} />
+          <Menus.List id={appointmentId}>
+            {status === "در انتظار" && (
+              <Menus.Button
+                icon={<TbSquareRoundedCheck />}
+                onClick={() =>
+                  updateStatus({ appointmentId, status: "تایید شده" })
+                }
+              >
+                تایید
+              </Menus.Button>
+            )}
+            {(status === "در انتظار" || status === "تایید شده") && (
+              <Menus.Button
+                icon={<TbSquareRoundedLetterX />}
+                onClick={() =>
+                  updateStatus({ appointmentId, status: "تایید نشده" })
+                }
+              >
+                عدم تایید
+              </Menus.Button>
+            )}
+            {(status === "تایید شده" || status === "در انتظار") && (
+              <Menus.Button
+                icon={<TbClipboardCheck />}
+                onClick={() =>
+                  updateStatus({ appointmentId, status: "تکمیل شده" })
+                }
+              >
+                تکمیل
+              </Menus.Button>
+            )}
+          </Menus.List>
+        </Menus.Menu>
+      )}
     </Table.Row>
   );
 }
