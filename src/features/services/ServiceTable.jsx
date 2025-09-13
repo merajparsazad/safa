@@ -24,7 +24,7 @@ function ServiceTable() {
     filteredServices = services.filter((service) => service.duration >= 31);
 
   // SORT
-  const sortBy = searchParams.get("sortBy") || "startDate-asc";
+  const sortBy = searchParams.get("sortBy") || "name-asc";
   const [field, direction] = sortBy.split("-");
   const modifier = direction === "asc" ? 1 : -1;
   const sortedServices = filteredServices.sort((a, b) => {
