@@ -6,8 +6,12 @@ import {
   TbClipboardCheck,
   TbSquareRoundedCheck,
   TbSquareRoundedLetterX,
+  TbTrash,
 } from "react-icons/tb";
 import { useUpdateStatus } from "./useUpdateAppointment";
+import Modal from "../../ui/Modal";
+import ConfirmDelete from "../../ui/ConfirmDelete";
+import { useDeleteAppointment } from "./useDeleteAppointment";
 
 function AppointmentRow({
   appointment: {
@@ -21,6 +25,7 @@ function AppointmentRow({
   },
 }) {
   const { updateStatus } = useUpdateStatus();
+  const { isDeleting, deleteAppointment } = useDeleteAppointment();
 
   return (
     <Table.Row>
@@ -49,7 +54,8 @@ function AppointmentRow({
       >
         {status}
       </div>
-      {(status === "در انتظار" || status === "تایید شده") && (
+
+      <Modal>
         <Menus.Menu>
           <Menus.Toggle id={appointmentId} />
           <Menus.List id={appointmentId}>
@@ -83,9 +89,20 @@ function AppointmentRow({
                 تکمیل
               </Menus.Button>
             )}
+            <Modal.Open opens="delete">
+              <Menus.Button icon={<TbTrash />}>حذف</Menus.Button>
+            </Modal.Open>
           </Menus.List>
         </Menus.Menu>
-      )}
+
+        <Modal.Window name="delete">
+          <ConfirmDelete
+            resourceName="appointment"
+            disabled={isDeleting}
+            onConfirm={() => deleteAppointment(appointmentId)}
+          />
+        </Modal.Window>
+      </Modal>
     </Table.Row>
   );
 }

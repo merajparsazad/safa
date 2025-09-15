@@ -68,3 +68,19 @@ export async function updateAppointment(id, obj) {
     throw new Error(error.message);
   }
 }
+
+export async function deleteAppointment(id) {
+  try {
+    const response = await fetch(`http://localhost:3000/appointments/${id}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error("خطا در حذف نوبت");
+    }
+
+    return true;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
