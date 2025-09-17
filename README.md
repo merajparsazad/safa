@@ -1,12 +1,46 @@
-# React + Vite
+# Safa 🛠️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern **appointment scheduling web application** built with **React** that provides a seamless experience for managing businesses, services, and customer appointments.
+Users can browse services, book appointments, update or cancel them, and businesses can manage their schedules in real time with proper status updates and notifications.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🔑 **Authentication system** with login & user context
+- 📅 **Appointments management**: create, update status (pending, confirmed, canceled), and delete
+- 🛠️ **Custom React hooks** for clean logic separation (`useLogin`, `useUpdateAppointments`, etc.)
+- ⚡ **React Query integration** for server state management (mutations & caching)
+- 🛒 **Service management**: add, edit, and remove business services
+- 🎛️ **UI/UX**: toast notifications for user feedback
+- ❌ **Error handling & loading states** for robust user experience
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React, React Router Dom, React Hook Form, React Icons
+- **State & Data:** React Query (@tanstack/react-query) + Devtools
+- **Styling:** TailwindCSS
+- **UI Enhancements:** React Toastify (notifications)
+- **Backend (Mock API):** JSON Server
+- **Build Tools:** Vite
+- **Linting & Formatting:** ESLint (React, Hooks, JSX-a11y) & Prettier
+
+---
+
+## 🚀 Installation & Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/merajparsazad/safa.git
+
+# Navigate to the project folder
+cd safa
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
