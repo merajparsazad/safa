@@ -1,3 +1,4 @@
+import AddUser from "../features/authentication/AddUser";
 import LoginForm from "../features/authentication/LoginForm";
 import Logo from "../ui/Logo";
 
@@ -11,6 +12,10 @@ function Login() {
         ورود به حساب کاربری
       </h4>
       <LoginForm />
+      <div className="flex items-center justify-center gap-4">
+        <p className="text-base">حساب کاربری ندارید؟</p>
+        <AddUser />
+      </div>
     </main>
   );
 }
