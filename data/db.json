@@ -6,7 +6,7 @@
       "password": "hashed-password-1",
       "fullName": "احمد میهن دوست",
       "phone_number": "09121111111",
-      "avatar": "",
+      "avatar": "/avatar-images/avatar-1.png",
       "business_role": true,
       "business_id": 101,
       "created_at": "2024-01-15T10:00:00Z"
@@ -17,7 +17,7 @@
       "password": "hashed-password-2",
       "fullName": "لیلا کریمی",
       "phone_number": "09122222222",
-      "avatar": "",
+      "avatar": "/avatar-images/avatar-2.png",
       "business_role": false,
       "business_id": null,
       "created_at": "2024-02-20T11:30:00Z"
@@ -28,7 +28,7 @@
       "password": "hashed-password-3",
       "fullName": "رضا حسینی",
       "phone_number": "09123333333",
-      "avatar": "",
+      "avatar": "/avatar-images/avatar-3.png",
       "business_role": false,
       "business_id": null,
       "created_at": "2024-03-05T14:00:00Z"
@@ -39,7 +39,7 @@
       "password": "hashed-password-4",
       "fullName": "مریم احمدی",
       "phone_number": "09124444444",
-      "avatar": "",
+      "avatar": "/avatar-images/avatar-4.png",
       "business_role": true,
       "business_id": 102,
       "created_at": "2024-04-10T09:00:00Z"
@@ -50,7 +50,7 @@
       "password": "hashed-password-5",
       "fullName": "علی رضایی",
       "phone_number": "09125555555",
-      "avatar": "",
+      "avatar": "/avatar-images/avatar-5.png",
       "business_role": true,
       "business_id": 103,
       "created_at": "2024-05-22T16:00:00Z"
@@ -61,7 +61,7 @@
       "password": "hashed-password-6",
       "fullName": "محمدی رستمی",
       "phone_number": "09126666666",
-      "avatar": "",
+      "avatar": "/avatar-images/avatar-6.png",
       "business_role": false,
       "business_id": null,
       "created_at": "2024-06-01T09:00:00Z"
@@ -72,7 +72,7 @@
       "password": "hashed-password-7",
       "fullName": "فاطمه شریفی",
       "phone_number": "09127777777",
-      "avatar": "",
+      "avatar": "/avatar-images/avatar-7.png",
       "business_role": false,
       "business_id": null,
       "created_at": "2024-06-10T11:00:00Z"
@@ -83,7 +83,7 @@
       "password": "hashed-password-8",
       "fullName": "حسن یوسفی",
       "phone_number": "09128888888",
-      "avatar": "",
+      "avatar": "/avatar-images/avatar-8.png",
       "business_role": false,
       "business_id": null,
       "created_at": "2024-06-15T14:00:00Z"
@@ -94,7 +94,7 @@
       "password": "hashed-password-9",
       "fullName": "زهرا فلاحی",
       "phone_number": "09129999999",
-      "avatar": "",
+      "avatar": "/avatar-images/avatar-9.png",
       "business_role": false,
       "business_id": null,
       "created_at": "2024-06-20T16:00:00Z"
@@ -105,7 +105,7 @@
       "password": "hashed-password-10",
       "fullName": "امیر اسدی",
       "phone_number": "09120000000",
-      "avatar": "",
+      "avatar": "/avatar-images/avatar-10.png",
       "business_role": false,
       "business_id": null,
       "created_at": "2024-07-01T10:00:00Z"
@@ -116,7 +116,7 @@
       "password": "hashed-password-11",
       "fullName": "نسرین بهرامی",
       "phone_number": "09121212121",
-      "avatar": "",
+      "avatar": "/avatar-images/avatar-11.png",
       "business_role": false,
       "business_id": null,
       "created_at": "2024-07-05T12:00:00Z"
@@ -127,7 +127,7 @@
       "password": "hashed-password-12",
       "fullName": "محسن کاظمی",
       "phone_number": "09123434343",
-      "avatar": "",
+      "avatar": "/avatar-images/avatar-12.png",
       "business_role": false,
       "business_id": null,
       "created_at": "2024-07-10T15:00:00Z"
@@ -138,7 +138,7 @@
       "password": "hashed-password-13",
       "fullName": "سارا محمدی",
       "phone_number": "09125656565",
-      "avatar": "",
+      "avatar": "/avatar-images/avatar-13.png",
       "business_role": false,
       "business_id": null,
       "created_at": "2024-07-15T17:00:00Z"
@@ -149,7 +149,7 @@
       "password": "hashed-password-14",
       "fullName": "فرهاد کریمی",
       "phone_number": "09127878787",
-      "avatar": "",
+      "avatar": "/avatar-images/avatar-14.png",
       "business_role": false,
       "business_id": null,
       "created_at": "2024-07-20T09:00:00Z"
@@ -160,7 +160,7 @@
       "password": "hashed-password-15",
       "fullName": "نازنین حسینی",
       "phone_number": "09129090909",
-      "avatar": "",
+      "avatar": "/avatar-images/avatar-15.png",
       "business_role": false,
       "business_id": null,
       "created_at": "2024-07-25T11:00:00Z"
