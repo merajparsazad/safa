@@ -7,16 +7,20 @@ import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
+import { useAuth } from "../authentication/AuthContext";
 
 function ServiceRow({ service }) {
   const { isDeleting, deleteService } = useDeleteService();
   const { isCreating, createService } = useCreateService();
+  const { user } = useAuth();
+  const businessId =
+    user?.business_role === true ? Number(user.business_id) : null;
 
   const { id: serviceId, name, duration, price, description, image } = service;
 
   function handleDuplicate() {
     createService({
-      business_id: 101,
+      business_id: businessId,
       name: `کپی از ${name}`,
       duration,
       price,

@@ -7,10 +7,14 @@ import Input from "../../ui/Input";
 import TextArea from "../../ui/TextArea";
 import { useCreateService } from "./useCreateService";
 import { useEditService } from "./useEditService";
+import { useAuth } from "../authentication/AuthContext";
 
 function CreateServiceForm({ serviceToEdit = {}, onCloseModal }) {
   const { id: editId, ...editValues } = serviceToEdit;
   const isEditSession = Boolean(editId);
+  const { user } = useAuth();
+  const businessId =
+    user?.business_role === true ? Number(user.business_id) : null;
 
   const { register, handleSubmit, reset, formState } = useForm({
     defaultValues: isEditSession ? editValues : {},
@@ -45,7 +49,7 @@ function CreateServiceForm({ serviceToEdit = {}, onCloseModal }) {
       createService(
         {
           ...data,
-          business_id: 101,
+          business_id: businessId,
           image: fakePath,
         },
         {
@@ -58,7 +62,10 @@ function CreateServiceForm({ serviceToEdit = {}, onCloseModal }) {
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} type={onCloseModal ? "modal" : "regular"}>
+    <Form
+      onSubmit={handleSubmit(onSubmit)}
+      type={onCloseModal ? "modal" : "regular"}
+    >
       <FormRow label="عنوان خدمت" error={errors?.name?.message}>
         <Input
           type="text"
