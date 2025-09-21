@@ -15,6 +15,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Bounce, ToastContainer } from "react-toastify";
 import ProtectedRoute from "./ui/ProtectedRoute";
+import Account from "./pages/Account";
 
 function App() {
   const queryClient = new QueryClient({
@@ -48,6 +49,7 @@ function App() {
             <Route path="availability" element={<Availability />} />
             <Route path="customers" element={<Customers />} />
             <Route path="settings" element={<Settings />} />
+            <Route path="account" element={<Account />} />
           </Route>
 
           <Route path="login" element={<Login />} />

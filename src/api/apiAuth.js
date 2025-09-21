@@ -55,3 +55,24 @@ export async function login({ email, password }) {
     throw new Error(error.message);
   }
 }
+
+export async function editUser(newUser, id) {
+  try {
+    const response = await fetch(`http://localhost:3000/users/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
+
+    if (!response.ok) {
+      throw new Error("خطا در ویرایش اطلاعات کاربر");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
