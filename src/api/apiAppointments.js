@@ -1,4 +1,6 @@
-export async function getAppointments(businessId) {
+import { getToday } from "../utils/helpers";
+
+export async function getAppointments(businessId, filterValue) {
   try {
     const [appointmentsRes, usersRes, servicesRes] = await Promise.all([
       fetch("http://localhost:3000/appointments"),
@@ -16,9 +18,21 @@ export async function getAppointments(businessId) {
       servicesRes.json(),
     ]);
 
-    const filteredAppointments = appointments.filter(
+    let filteredAppointments = appointments.filter(
       (appointment) => Number(appointment.business_id) === Number(businessId),
     );
+
+    if (filterValue) {
+      if (filterValue !== "all") {
+        const daysAgo = Number(filterValue);
+        const now = getToday({ end: true });
+        filteredAppointments = filteredAppointments.filter((appointment) => {
+          const startTime = new Date(appointment.start_time);
+          const diffInDays = (now - startTime) / (1000 * 60 * 60 * 24);
+          return diffInDays <= daysAgo;
+        });
+      }
+    }
 
     const result = filteredAppointments.map((appointment) => {
       const customer = users.find(
@@ -36,6 +50,7 @@ export async function getAppointments(businessId) {
         startTime: appointment.start_time,
         endTime: appointment.end_time,
         status: appointment.status,
+        created_at: appointment.created_at,
       };
     });
 
