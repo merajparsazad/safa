@@ -33,3 +33,15 @@ export function getToday(options = {}) {
   }
   return today;
 }
+
+export function toJalaliDayMonth(dateString) {
+  const date = new Date(dateString);
+
+  const dateFormatter = new Intl.DateTimeFormat("fa-IR-u-ca-persian", {
+    day: "2-digit",
+    month: "long",
+    timeZone: "UTC",
+  });
+
+  return dateFormatter.format(date);
+}
