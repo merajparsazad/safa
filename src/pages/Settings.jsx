@@ -1,5 +1,5 @@
 function Settings() {
-  return <div></div>;
+  return <div className="text-5xl">به زودی...</div>;
 }
 
 export default Settings;

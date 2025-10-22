@@ -1,5 +1,5 @@
 function Availability() {
-  return <div></div>;
+  return <div className="text-5xl">به زودی...</div>;
 }
 
 export default Availability;

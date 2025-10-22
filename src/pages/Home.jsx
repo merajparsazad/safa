@@ -1,5 +1,5 @@
 function Home() {
-  return <div></div>;
+  return <div className="text-5xl">به زودی...</div>;
 }
 
 export default Home;
