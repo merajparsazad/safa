@@ -31,7 +31,7 @@ function App() {
       <ReactQueryDevtools initialIsOpen={false} />
       <BrowserRouter>
         <Routes>
-          <Route index element={<Navigate replace path="/" />} />
+          {/* <Route index element={<Navigate replace path="/" />} /> */}
           <Route path="/" element={<Home />} />
           <Route path="business/:businessId" element={<Business />} />
 
@@ -52,6 +52,7 @@ function App() {
             <Route path="account" element={<Account />} />
           </Route>
 
+          <Route index element={<Navigate replace path="login" />} />
           <Route path="login" element={<Login />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
