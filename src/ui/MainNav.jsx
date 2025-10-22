@@ -10,9 +10,9 @@ import { NavLink } from "react-router-dom";
 function MainNav() {
   const navItems = [
     { to: "dashboard", label: "داشبورد", icon: <MdOutlineSpaceDashboard /> },
-    { to: "calendar", label: "تقویم", icon: <MdCalendarMonth /> },
     { to: "appointments", label: "نوبت‌ها", icon: <MdOutlineFactCheck /> },
     { to: "services", label: "خدمات", icon: <MdOutlineHomeRepairService /> },
+    { to: "calendar", label: "تقویم", icon: <MdCalendarMonth /> },
     { to: "availability", label: "زمان‌های آزاد", icon: <TbClockQuestion /> },
     { to: "customers", label: "مشتریان", icon: <TbUsersGroup /> },
     { to: "settings", label: "تنظیمات", icon: <TbSettings /> },
